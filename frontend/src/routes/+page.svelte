@@ -63,7 +63,6 @@
     onMount(()=>{
         token = localStorage.getItem('pmToken');
         authenticateToken()
-
         fetchInfo()
     })
 
@@ -76,7 +75,7 @@
             <button on:click={()=> menuTable=1} class="px-5 rounded-lg transition-all duration-300 hover:bg-purple-600 {menuTable==1?"bg-purple-600":""} py-2">Employees</button>    
             <button on:click={()=> menuTable=2} class="px-5 rounded-lg transition-all duration-300 hover:bg-purple-600 {menuTable==2?"bg-purple-600":""} py-2">Items</button>    
         </div>
-            <button class="px-5 rounded-lg transition-all duration-300 hover:bg-purple-600 py-2">Create +</button>    
+        <button class="px-5 rounded-lg transition-all duration-300 hover:bg-purple-600 py-2">Create +</button>    
         
     </div>
     <div class="w-full px-5 pt-5 h-full bg-white">        

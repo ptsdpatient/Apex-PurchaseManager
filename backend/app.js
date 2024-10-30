@@ -84,7 +84,7 @@ app.get('/getPurchases', authenticateToken, (req, res) => {
 function authenticateToken(req, res, next) {
     const authHeader = req.headers['authorization'];
     const token = authHeader && authHeader.split(' ')[1];
-
+    console.log("wazza")
     if (!token) {
         return res.status(401).json({ error: 'Token is missing' }); // No token, unauthorized
     }
@@ -100,6 +100,7 @@ function authenticateToken(req, res, next) {
 
 // Route to authenticate token
 app.get('/authenticateToken', authenticateToken, (req, res) => {
+    console.log("skibidi")
     return res.status(200).json({ done: true, admin: req.user.isAdmin });
 });
 

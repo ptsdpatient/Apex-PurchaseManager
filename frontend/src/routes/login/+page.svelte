@@ -6,29 +6,33 @@
     let url='http://localhost:2000'
 
     async function login() {
-    try {
-        const response = await fetch(`${url}/login`, {
-            method: 'POST', // Use POST for login requests
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}` // Attach the token in the Authorization header
-            },
-            body: JSON.stringify({ // Convert the object to a JSON string
-                username: username,
-                password: password
-            })
-        });
-
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
+        if(!username || !password){
+            alert("username or password empty!")
+            return "skibidi"
         }
+        try {
+            const response = await fetch(`${url}/login`, {
+                method: 'POST', // Use POST for login requests
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}` // Attach the token in the Authorization header
+                },
+                body: JSON.stringify({ // Convert the object to a JSON string
+                    username: username,
+                    password: password
+                })
+            });
 
-        const data = await response.json();
-        localStorage.setItem('pmToken', data.token);
-        window.location='/'
-    } catch (error) {
-        return { error: 'Network error or server not reachable' };
-    }
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+
+            const data = await response.json();
+            localStorage.setItem('pmToken', data.token);
+            window.location='/'
+        } catch (error) {
+            return { error: 'Network error or server not reachable' };
+        }
 }
 
 
@@ -58,10 +62,10 @@
 </script>
 
 
-<div class="flex flex-row justify-center bg-purple-800" style="height:100svh;width:100vw;">
+<div class="flex flex-row justify-center bg-purple-100" style="height:100svh;width:100vw;">
     <div class="w-1/3 h-full flex flex-col justify-center">
-        <div class="flex flex-col bg-purple-700  p-10 gap-2 text-xl text-white rounded-lg">
-            <div class="text-4xl  mb-6">Apex Purchase Manager</div>
+        <div class="flex flex-col bg-purple-600  p-10 gap-2 text-xl text-white rounded-xl">
+            <div class="text-3xl  mb-4">Apex Purchase Manager</div>
             <div>Username : </div>
             <input bind:value={username} placeholder="username" class="text-black rounded-lg py-2 px-4">
             <div>Password : </div>
